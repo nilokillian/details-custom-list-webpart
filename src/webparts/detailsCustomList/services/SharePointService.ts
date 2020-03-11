@@ -20,6 +20,7 @@ import {
   IHttpClientOptions
 } from "@microsoft/sp-http";
 import { camlQueryBuilder } from "../utils/camlQueryBuilder";
+import { IFile } from "../utils/getZippedFiles";
 
 export interface IFileBlob {
   fileName: string;
@@ -215,6 +216,18 @@ export class SharePointServiceManager {
       .getByName(listTitle)
       .files.expand(...expand)
       .get();
+  };
+
+  public pnp_getLibraryFileBlob = async (files: IFile[]): Promise<any> => {
+    const res: IFileBlob[] = [];
+    for (const file of files) {
+      res.push({
+        fileName: file.name,
+        fileContext: await sp.web.getFileByServerRelativeUrl(file.url).getBlob()
+      });
+    }
+
+    return res;
   };
 
   public pnp_getLibraryFileBlobinBatch = async (

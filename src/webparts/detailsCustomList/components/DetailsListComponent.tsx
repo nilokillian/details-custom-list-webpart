@@ -60,6 +60,7 @@ export const DetailsListComponent: React.FC = (): JSX.Element => {
               ({
                 selectedItemId: currentSelectedItem.Id,
                 selectedItemUniqueId: currentSelectedItem.UniqueId,
+                serverRelativeUrl: currentSelectedItem.ServerRelativeUrl,
                 selectedItemName: currentSelectedItem.Name,
                 selectedItemDocId: currentSelectedItem.OData__dlc_DocId,
                 selectedItemUrlOpenInBrowser: currentSelectedItem.LinkingUrl,

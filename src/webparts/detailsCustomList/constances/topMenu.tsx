@@ -37,10 +37,10 @@ export const menuItems = (
 export const activeMenuItems = (
   selectedListInternalName: string,
   activateFeedbackForm: boolean,
-  onAlertMe: Function,
-  onCopyLink: Function,
-  onShareLink: Function,
-  onForm: Function,
+  onAlertMe: (value: boolean) => void,
+  onCopyLink: (value: boolean) => void,
+  onShareLink: (value: boolean) => void,
+  onForm: (value: boolean) => void,
   selectedItems: ISelectedItem[]
 ): ICommandBarItemProps[] => [
   {
@@ -116,11 +116,7 @@ export const activeMenuItems = (
     href: selectedItems.length === 1 && dowloadSingleFile(selectedItems[0]),
     onClick:
       selectedItems.length > 1
-        ? async () =>
-            await getZippedFiles(
-              selectedListInternalName,
-              selectedItems.map(i => i.selectedItemName)
-            )
+        ? async () => await getZippedFiles(selectedItems)
         : () => null
   },
 

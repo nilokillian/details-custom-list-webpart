@@ -121,11 +121,7 @@ export const ContextualMenuComponent: React.FC<IContextualMenuComponentProps> = 
                   dowloadSingleFile(selectedItems[0]),
                 onClick:
                   selectedItems.length > 1
-                    ? async () =>
-                        await getZippedFiles(
-                          selectedListInternalName,
-                          selectedItems.map(i => i.selectedItemName)
-                        )
+                    ? async () => await getZippedFiles(selectedItems)
                     : () => null,
                 style: {
                   display: selectedItems.length > 0 ? "inline-block" : "none"
