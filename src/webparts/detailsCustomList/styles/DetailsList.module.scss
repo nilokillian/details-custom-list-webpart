@@ -1,0 +1,66 @@
+.detailsList {
+  max-height: 80vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.detailsListContainer {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.footerBlock {
+  display: "inline-block";
+  margin: 15px;
+}
+
+.groupHeader {
+  padding-left: 12px;
+  font-size: 21px;
+  font-weight: 300;
+  cursor: "pointer";
+  white-space: "nowrap";
+  text-overflow: "ellipsis";
+  outline: 0;
+  height: 38px;
+}
+.groupHeaderTitle {
+  vertical-align: "middle";
+}
+
+.headerCount {
+  vertical-align: "middle";
+  padding-top: 0;
+  padding-right: 4px;
+  padding-bottom: 0;
+  padding-left: 4px;
+}
+.copyIcon {
+  position: relative;
+  transform: translateX(-50%) scale(0.5, 0.5);
+  transform-origin: 50% 50%;
+  background-color: #599b00;
+  color: #ffffff;
+  font-size: 21px;
+  border-radius: 50%;
+  width: 94px;
+  height: 94px;
+  animation: bounce 0.45s;
+  animation-fill-mode: both;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 120px;
+}
+
+.collapseContol {
+  margin-top: 15px;
+}
+
+.copiedTitle {
+  margin-left: 85px;
+}
+
+.copyIconContainer {
+  margin-bottom: 5px;
+}

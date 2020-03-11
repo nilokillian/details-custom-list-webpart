@@ -1,0 +1,20 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "details-custom-list-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/detailsCustomList/DetailsCustomListWebPart.js",
+          "manifest": "./src/webparts/detailsCustomList/DetailsCustomListWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "DetailsCustomListWebPartStrings": "lib/webparts/detailsCustomList/loc/{locale}.js",
+    "ControlStrings": "node_modules/@pnp/spfx-controls-react/lib/loc/{locale}.js",
+    "PropertyControlStrings": "node_modules/@pnp/spfx-property-controls/lib/loc/{locale}.js"
+  }
+}
