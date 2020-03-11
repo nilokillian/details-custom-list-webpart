@@ -1,5 +1,5 @@
-import { ISelectedItem } from "../contexts/SPItemsContext";
 import SharePointService from "../services/SharePointService";
+import { ISelectedItem } from "../interfaces/ISelectedItem";
 
 export const dowloadSingleFile = (item: ISelectedItem) => {
   const base = SharePointService.context.pageContext.web.absoluteUrl;

@@ -1,5 +1,5 @@
 import { IListItem } from "./ISharePoint";
-import { ISelectedItem } from "../contexts/SPItemsContext";
+import { ISelectedItem } from "./ISelectedItem";
 
 export interface ISPItemsContext {
   listItems: IListItem[];

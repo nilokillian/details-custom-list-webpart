@@ -20,8 +20,7 @@ import {
   IHttpClientOptions
 } from "@microsoft/sp-http";
 import { camlQueryBuilder } from "../utils/camlQueryBuilder";
-import { IFile } from "../utils/getZippedFiles";
-import { IFileBlob } from "./interfaces";
+import { IFileBlob, IFile } from "./interfaces";
 
 export class SharePointServiceManager {
   public context: WebPartContext;
