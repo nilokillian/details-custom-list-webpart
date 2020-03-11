@@ -1,31 +1,11 @@
 import * as React from "react";
 import { createContext, useState, useEffect, useContext } from "react";
 import SharePointService from "../services/SharePointService";
-import { IListItem } from "../interfaces/ISharePoint";
 import { itemsMapper, itemsReMapper } from "../mappers/SPItemsContextMapper";
 import { SPFieldsContext } from "./SPFieldsContext";
 import { IDetailsListAppProps } from "../interfaces/IDetailsListAppProps";
-
-export interface ISPItemsContext {
-  listItems: IListItem[];
-  selectedItems: ISelectedItem[];
-  setSelectedItems: (selectedItems: ISelectedItem[]) => void;
-  clearSelection: boolean;
-  setClearSelection: (value: boolean) => void;
-  queryUrlFilterGroupByField: string;
-  setQueryUrlFilterGroupByField: (value: string) => void;
-}
-
-export interface ISelectedItem {
-  selectedItemId: string | number;
-  selectedItemName: string;
-  serverRelativeUrl: string;
-  selectedItemUrlDownload: string;
-  selectedItemUrlOpenInBrowser: string;
-  selectedItemDocId: string;
-  selectedItemExt: string;
-  selectedItemUniqueId: string;
-}
+import { ISPItemsContext } from "../interfaces/ISPItemsContext";
+import { ISelectedItem } from "../interfaces/ISelectedItem";
 
 export const SPItemsContext = createContext<ISPItemsContext>(
   {} as ISPItemsContext
@@ -45,7 +25,6 @@ export const SPItemsContextProvider: React.FC<IDetailsListAppProps> = (
     string
   >("");
   const { viewFields, selectedListId } = useContext(SPFieldsContext);
-
   const [clearSelection, setClearSelection] = useState(false);
 
   const getListItemsByCamlQuery = async (): Promise<void> => {

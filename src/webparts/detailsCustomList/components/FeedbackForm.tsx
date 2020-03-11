@@ -11,16 +11,9 @@ import {
   Image
 } from "office-ui-fabric-react";
 import SharePointService from "../services/SharePointService";
-import { IFeedbackForm } from "../interfaces/IFeedbackForm";
+import { IFeedbackFormProps } from "../interfaces/IFeedbackFormProps";
 
 const formImage: string = require("../images/FormResource.png");
-
-export interface IFeedbackFormProps {
-  feedbackFormSettings: IFeedbackForm;
-  docId: string;
-  isOpen: boolean;
-  onCloseForm: () => void;
-}
 
 const itemAlignmentsStackTokens: IStackTokens = {
   childrenGap: 2

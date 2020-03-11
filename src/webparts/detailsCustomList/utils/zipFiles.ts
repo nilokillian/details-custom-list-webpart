@@ -1,6 +1,6 @@
 import * as JSZip from "jszip";
 import * as FileSaver from "file-saver";
-import { IFileBlob } from "../services/SharePointService";
+import { IFileBlob } from "../services/interfaces";
 
 export const zipFiles = (files: IFileBlob[]) => {
   const zip: JSZip = new JSZip();

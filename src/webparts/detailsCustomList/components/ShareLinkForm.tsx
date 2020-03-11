@@ -1,10 +1,6 @@
 import * as React from "react";
-
-export interface IShareLinkFormProps {
-  listId: string;
-  itemId: string;
-}
 import { shareLink } from "../utils/shareLink";
+import { IShareLinkFormProps } from "../interfaces/IShareLinkFormProps";
 
 export const ShareLinkForm: React.FC<IShareLinkFormProps> = ({
   listId,

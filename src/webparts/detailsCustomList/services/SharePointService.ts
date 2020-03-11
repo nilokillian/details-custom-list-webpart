@@ -21,11 +21,7 @@ import {
 } from "@microsoft/sp-http";
 import { camlQueryBuilder } from "../utils/camlQueryBuilder";
 import { IFile } from "../utils/getZippedFiles";
-
-export interface IFileBlob {
-  fileName: string;
-  fileContext: Blob;
-}
+import { IFileBlob } from "./interfaces";
 
 export class SharePointServiceManager {
   public context: WebPartContext;

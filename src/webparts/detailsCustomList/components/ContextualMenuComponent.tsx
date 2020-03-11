@@ -16,11 +16,7 @@ import { copyLink } from "../utils/copyLink";
 import { ShareLinkForm } from "./ShareLinkForm";
 import { dowloadSingleFile } from "../utils/dowloadSingleFile";
 import { getZippedFiles } from "../utils/getZippedFiles";
-
-export interface IContextualMenuComponentProps {
-  selectedItemId: string | number;
-  docId: string;
-}
+import { IContextualMenuComponentProps } from "../interfaces/IContextualMenuComponentProps";
 
 export const ContextualMenuComponent: React.FC<IContextualMenuComponentProps> = React.memo(
   ({ selectedItemId, docId }): JSX.Element => {

@@ -10,16 +10,6 @@ export const SPFieldsContext = createContext<ISPFieldsContext>(
   {} as ISPFieldsContext
 );
 
-export interface ISPFieldsContextProviderProps {
-  selectedListId: string;
-  selectedListTitle: string;
-  selectedListInternalName: string;
-  selectedViewId: string;
-  selectedSortByFields: IViewField[];
-  selectedGroupByFields: string[];
-  selectedViewFields: string[];
-}
-
 export const SPFieldsContextProvider: React.FC<IDetailsListAppProps> = props => {
   const [viewId, setViewId] = useState<string>("");
   const [viewFields, setViewFields] = useState<IViewField[] | any[]>([]);

@@ -1,11 +1,6 @@
 import * as React from "react";
 import { Modal, Spinner, SpinnerSize } from "office-ui-fabric-react";
-
-export interface IAlertMeFormProps {
-  link: string;
-  isDialog: boolean;
-  onDismiss: () => void;
-}
+import { IAlertMeFormProps } from "../interfaces/IAlertMeFormProps";
 
 export const AlertMeForm: React.FC<IAlertMeFormProps> = ({
   isDialog,

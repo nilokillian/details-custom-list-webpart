@@ -6,9 +6,9 @@ import {
 import { exportToExcel } from "../utils/exportToExcel";
 import { getDocTypeIcon } from "../styles/Icons";
 import { getOpentInLink } from "../utils/openInLink";
-import { ISelectedItem } from "../contexts/SPItemsContext";
 import { dowloadSingleFile } from "../utils/dowloadSingleFile";
 import { getZippedFiles } from "../utils/getZippedFiles";
+import { ISelectedItem } from "../interfaces/ISelectedItem";
 
 const getDisplayAttr = (selectedItems: ISelectedItem[]) => {
   return selectedItems.length === 1 &&
