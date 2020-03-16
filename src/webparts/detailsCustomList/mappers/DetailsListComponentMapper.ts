@@ -9,27 +9,12 @@ export const columnSizemapper = (
 ): number => {
   switch (columnName) {
     case "Type":
-      console.log(
-        "defaultColumnsWidth.docIconColumnsSize",
-        defaultColumnsWidth.docIconColumnsSize
-      );
-
       return defaultColumnsWidth.docIconColumnsSize;
 
     case "Name":
-      console.log(
-        "defaultColumnsWidth.nameColumnsSize",
-        defaultColumnsWidth.nameColumnsSize
-      );
-
       return defaultColumnsWidth.nameColumnsSize;
 
     case "Document Type":
-      console.log(
-        "defaultColumnsWidth.documentTypeColumnsSize",
-        defaultColumnsWidth.documentTypeColumnsSize
-      );
-
       return defaultColumnsWidth.documentTypeColumnsSize;
 
     case "Modified":
