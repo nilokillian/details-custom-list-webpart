@@ -26,6 +26,7 @@ import { sortByFieldsMapper, viewFieldsMapper } from "./mappers/WebPartMappers";
 import { IRootFolder } from "./interfaces/IRootFolder";
 import { IDownerStandardDetailsListWebPartProps } from "./interfaces/IDownerStandardDetailsListWebPartProps";
 import { IFolder } from "./interfaces/IFolder";
+import { PropertyFieldNumber } from "@pnp/spfx-property-controls/lib/PropertyFieldNumber";
 
 export default class DownerStandardDetailsListGroupedWebPart extends BaseClientSideWebPart<
   IDownerStandardDetailsListWebPartProps
@@ -56,7 +57,11 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
       feedbackListFieldDocIdName,
       feedbackListName,
       selectedDetailsListSize,
-      activateFooter
+      activateFooter,
+      docIconColumnsSize,
+      nameColumnsSize,
+      documentTypeColumnsSize,
+      modifiedColumnsSize
     } = this.properties;
 
     const element: React.ReactElement<IDetailsListAppProps> = React.createElement(
@@ -82,6 +87,12 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
           : undefined,
         onWebpartConfigure: this.onWebpartConfigure,
         selectedDetailsListSize,
+        defaultColumnsWidth: {
+          docIconColumnsSize,
+          nameColumnsSize,
+          documentTypeColumnsSize,
+          modifiedColumnsSize
+        },
         footer: activateFooter
       }
     );
@@ -163,9 +174,6 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
 
       this.properties.selectedViewId = viewId;
       this.properties.selectedViewCamlQuery = currentView.ViewQuery;
-
-      //console.log("currentView.ViewQuery", currentView.ViewQuery);
-
       this._viewColumnOptions = viewFields.map((f: string) => ({
         key: f,
         text: f
@@ -289,6 +297,15 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
     } else if (propertyPath === "selectedDetailsListSize" && newValue) {
       this.context.propertyPane.refresh();
     }
+
+    // else if (
+    //   propertyPath === "docIconColumnsSize" ||
+    //   propertyPath === "nameColumnsSize" ||
+    //   propertyPath === "documentTypeColumnsSize" ||
+    //   (propertyPath === "modifiedColumnsSize" && newValue)
+    // ) {
+    //   this.context.propertyPane.refresh();
+    // }
   }
 
   protected getPropertyPaneConfiguration(): IPropertyPaneConfiguration {
@@ -299,12 +316,15 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
       selectedViewFields,
       selectedSortByFields,
       selectedDetailsListSize,
-      urlQueryActive,
       feedbackListName,
       feedbackListFieldName,
       feedbackListFieldDocIdName,
       activateFeedbackForm,
-      activateFooter
+      activateFooter,
+      docIconColumnsSize,
+      nameColumnsSize,
+      documentTypeColumnsSize,
+      modifiedColumnsSize
     } = this.properties;
 
     return {
@@ -429,6 +449,38 @@ export default class DownerStandardDetailsListGroupedWebPart extends BaseClientS
                   label: "Select Details list size",
                   options: this._detailsListSizeOptions,
                   selectedKey: selectedDetailsListSize
+                }),
+
+                PropertyFieldNumber("docIconColumnsSize", {
+                  key: "docIconColumnsSize",
+                  label: "DocIcon column size",
+                  value: docIconColumnsSize,
+                  maxValue: 1000,
+                  minValue: 1
+                }),
+
+                PropertyFieldNumber("nameColumnsSize", {
+                  key: "nameColumnsSize",
+                  label: "Name column size",
+                  value: nameColumnsSize,
+                  maxValue: 1000,
+                  minValue: 1
+                }),
+
+                PropertyFieldNumber("documentTypeColumnsSize", {
+                  key: "documentTypeColumnsSize",
+                  label: "Document Type column size",
+                  value: documentTypeColumnsSize,
+                  maxValue: 1000,
+                  minValue: 1
+                }),
+
+                PropertyFieldNumber("modifiedColumnsSize", {
+                  key: "modifiedColumnsSize",
+                  label: "Modified column size",
+                  value: modifiedColumnsSize,
+                  maxValue: 1000,
+                  minValue: 1
                 })
               ]
             }

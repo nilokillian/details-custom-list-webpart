@@ -18,8 +18,8 @@
     {
       "groupId": "5c03119e-3074-46fd-976b-c60198311f70", // Other
       "group": { "default": "Other" },
-      "title": { "default": "details-custom-list" },
-      "description": { "default": "details-custom-list description" },
+      "title": { "default": "Details custom list" },
+      "description": { "default": "Details custom list" },
       "officeFabricIconFontName": "CustomList",
       "properties": {
         "urlQueryActive": false,
@@ -42,6 +42,11 @@
           "large": "100vh",
           "autoSize": "80vh"
         },
+
+        "docIconColumnsSize": 50,
+        "nameColumnsSize": 450,
+        "documentTypeColumnsSize": 90,
+        "modifiedColumnsSize": 90,
         "activateFeedbackForm": false,
         "activateFooter": false,
         "feedbackListName": "",

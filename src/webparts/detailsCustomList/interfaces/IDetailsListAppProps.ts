@@ -1,6 +1,7 @@
 import { UrlQueryParameterCollection } from "@microsoft/sp-core-library";
 import { IFeedbackForm } from "./IFeedbackForm";
 import { IViewField, ISortByField } from "./IWebPartMappers";
+import { IDefaultColumnsWidth } from "./IDefaultColumnsWidth";
 
 export interface IDetailsListAppProps {
   selectedListId: string;
@@ -8,6 +9,7 @@ export interface IDetailsListAppProps {
   selectedViewId: string;
   selectedListTitle: string;
   selectedViewTitle: string;
+  defaultColumnsWidth: IDefaultColumnsWidth;
   selectedViewCamlQuery: string;
   selectedViewFields: IViewField[];
   selectedSortByFields: ISortByField[];

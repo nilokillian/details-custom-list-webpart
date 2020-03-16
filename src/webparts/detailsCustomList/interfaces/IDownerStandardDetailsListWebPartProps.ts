@@ -21,6 +21,11 @@ export interface IDownerStandardDetailsListWebPartProps {
     large: string;
     autoSize: string;
   };
+
+  docIconColumnsSize: number;
+  nameColumnsSize: number;
+  documentTypeColumnsSize: number;
+  modifiedColumnsSize: number;
   selectedDetailsListSize: string;
   activateFeedbackForm: boolean;
   activateFooter: boolean;

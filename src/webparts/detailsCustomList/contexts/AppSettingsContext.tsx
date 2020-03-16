@@ -11,7 +11,7 @@ export const AppSettingsContext = createContext<IAppSettingsContext>(
 export const AppSettingsContextProvider: React.FC<IDetailsListAppProps> = props => {
   const [detailsListSize, setDetailsListSize] = useState<string>();
   const [userHasFullControl, setUserHasFullControl] = useState(false);
-  const { selectedDetailsListSize } = props;
+  const { selectedDetailsListSize, defaultColumnsWidth } = props;
 
   useEffect(() => {
     setDetailsListSize(selectedDetailsListSize);
@@ -25,7 +25,7 @@ export const AppSettingsContextProvider: React.FC<IDetailsListAppProps> = props 
 
   return (
     <AppSettingsContext.Provider
-      value={{ detailsListSize, userHasFullControl }}
+      value={{ detailsListSize, userHasFullControl, defaultColumnsWidth }}
     >
       {props.children}
     </AppSettingsContext.Provider>

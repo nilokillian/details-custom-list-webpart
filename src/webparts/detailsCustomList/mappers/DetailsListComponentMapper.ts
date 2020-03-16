@@ -1,15 +1,39 @@
-import * as React from "react";
 import { IColumn } from "office-ui-fabric-react";
 import { sortBy } from "lodash";
 import { IViewField } from "../interfaces/IWebPartMappers";
+import { IDefaultColumnsWidth } from "../interfaces/IDefaultColumnsWidth";
 
-export const columnSizemapper = (columnName: string): number => {
+export const columnSizemapper = (
+  columnName: string,
+  defaultColumnsWidth: IDefaultColumnsWidth
+): number => {
   switch (columnName) {
     case "Type":
-      return 50;
+      console.log(
+        "defaultColumnsWidth.docIconColumnsSize",
+        defaultColumnsWidth.docIconColumnsSize
+      );
+
+      return defaultColumnsWidth.docIconColumnsSize;
 
     case "Name":
-      return 450;
+      console.log(
+        "defaultColumnsWidth.nameColumnsSize",
+        defaultColumnsWidth.nameColumnsSize
+      );
+
+      return defaultColumnsWidth.nameColumnsSize;
+
+    case "Document Type":
+      console.log(
+        "defaultColumnsWidth.documentTypeColumnsSize",
+        defaultColumnsWidth.documentTypeColumnsSize
+      );
+
+      return defaultColumnsWidth.documentTypeColumnsSize;
+
+    case "Modified":
+      return defaultColumnsWidth.modifiedColumnsSize;
 
     default:
       return 85;
@@ -18,10 +42,7 @@ export const columnSizemapper = (columnName: string): number => {
 
 export const columnsMapper = (
   fields: IViewField[],
-  _onColumnClick?: (
-    ev: React.MouseEvent<HTMLElement, MouseEvent>,
-    column: IColumn
-  ) => void
+  defaultColumnsWidth: IDefaultColumnsWidth
 ): IColumn[] => {
   const columns: IColumn[] = fields.map(field => {
     const obj = {
@@ -37,7 +58,7 @@ export const columnsMapper = (
           ? "Name"
           : field.internalName,
       minWidth: 50,
-      maxWidth: columnSizemapper(field.title),
+      maxWidth: columnSizemapper(field.title, defaultColumnsWidth),
       isResizable: true,
       iconName: field.title === "Type" ? "Page" : "",
       isIconOnly: field.title === "Type",

@@ -1,4 +1,5 @@
 import * as React from "react";
+import { useEffect } from "react";
 import {
   DetailsList,
   IDetailsHeaderProps,
@@ -35,7 +36,9 @@ import { IQColumns } from "../interfaces/IQColumns";
 import { ISelectedItem } from "../interfaces/ISelectedItem";
 
 export const DetailsListComponent: React.FC = (): JSX.Element => {
-  const { detailsListSize } = React.useContext(AppSettingsContext);
+  const { detailsListSize, defaultColumnsWidth } = React.useContext(
+    AppSettingsContext
+  );
   const { urlParams, urlQueryActive } = React.useContext(UrlQueryFilterContext);
   const {
     listItems,
@@ -47,7 +50,7 @@ export const DetailsListComponent: React.FC = (): JSX.Element => {
   const { viewFields, sortByFields } = React.useContext(SPFieldsContext);
   const [items, setItems] = React.useState<any[]>([]);
   const [columns, setColumns] = React.useState<IColumn[]>(
-    columnsMapper(viewFields)
+    columnsMapper(viewFields, defaultColumnsWidth)
   );
 
   const [selection] = React.useState<Selection>(
@@ -143,12 +146,14 @@ export const DetailsListComponent: React.FC = (): JSX.Element => {
     if (!urlQueryActive) {
       sortedItems = sortedItemsByGroups(listItems, sortByFields);
 
-      setColumns(columnsMapper(viewFields));
+      setColumns(columnsMapper(viewFields, defaultColumnsWidth));
       setItems(sortedItems);
       return;
     }
 
-    const initialColumnsPlusGroupBy = [...columnsMapper(viewFields)];
+    const initialColumnsPlusGroupBy = [
+      ...columnsMapper(viewFields, defaultColumnsWidth)
+    ];
 
     initialColumnsPlusGroupBy.map(mappedColumn => {
       if (
@@ -254,27 +259,37 @@ export const DetailsListComponent: React.FC = (): JSX.Element => {
       sortedItems = sortedItemsByGroups(listItems, sortByFields);
 
       selection.setItems(sortedItems);
-      setColumns(columnsMapper(viewFields));
+      setColumns(columnsMapper(viewFields, defaultColumnsWidth));
       setItems(sortedItems);
     }
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     if (clearSelection) selection.setItems(items, true);
     setClearSelection(false);
   }, [clearSelection]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     urlQueryDataFilter();
   }, [listItems, viewFields, sortByFields, urlQueryActive]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     setItems(listItems);
   }, [listItems]);
 
-  React.useEffect(() => {
+  useEffect(() => {
     selection.setItems(items);
   }, [items]);
+
+  // useEffect(() => {
+  //   console.log("11114");
+  //   setColumns(columnsMapper(viewFields, defaultColumnsWidth));
+  // }, [
+  //   docIconColumnsSize,
+  //   documentTypeColumnsSize,
+  //   modifiedColumnsSize,
+  //   nameColumnsSize
+  // ]);
 
   return (
     <div style={{ height: detailsListSize, position: "relative" }}>
